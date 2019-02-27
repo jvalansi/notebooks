@@ -1,0 +1,120 @@
+
+PRACTICE
+COMPETE
+JOBS
+LEADERBOARD
+
+7
+jvalansi
+PracticeProblem Solving
+Problem Solving
+124 more points to get your gold badge!
+Rank: 96262|Points: 726/850
+Problem Solving
+AlgorithmsData Structures
+Cycle Detection
+MediumMax Score: 5Success Rate: 93.91%
+Given a pointer to the head of a linked list, determine whether the linked list loops back onto itself
+
+Solve Challenge
+Sparse Arrays
+MediumMax Score: 25Success Rate: 96.66%
+
+Solved
+Tree: Huffman Decoding
+MediumMax Score: 20Success Rate: 97.55%
+
+Solve Challenge
+Swap Nodes [Algo]
+MediumMax Score: 40Success Rate: 87.43%
+
+Solved
+promo-icon
+HackerRank is hiring Front End Developers!
+Solve the code challenge to land an interview with our team at Mountain View.
+
+View
+Is This a Binary Search Tree?
+MediumMax Score: 30Success Rate: 75.65%
+
+Solve Challenge
+Self Balancing Tree
+MediumMax Score: 50Success Rate: 73.27%
+
+Solve Challenge
+Queue using Two Stacks
+MediumMax Score: 30Success Rate: 88.24%
+
+Solve Challenge
+Components in a graph
+MediumMax Score: 50Success Rate: 82.58%
+
+Solve Challenge
+Balanced Brackets
+MediumMax Score: 25Success Rate: 83.15%
+
+Solve Challenge
+Castle on the Grid
+MediumMax Score: 30Success Rate: 70.36%
+
+Solve Challenge
+Down to Zero II
+MediumMax Score: 40Success Rate: 41.82%
+
+Solve Challenge
+Game of Two Stacks
+MediumMax Score: 30Success Rate: 39.10%
+
+Solve Challenge
+Largest Rectangle
+MediumMax Score: 50Success Rate: 65.49%
+
+Solve Challenge
+Simple Text Editor
+MediumMax Score: 65Success Rate: 86.32%
+
+Solved
+Waiter
+MediumMax Score: 75Success Rate: 82.17%
+
+Solved
+Contacts
+MediumMax Score: 40Success Rate: 69.52%
+
+Solve Challenge
+Kindergarten Adventures
+MediumMax Score: 30Success Rate: 40.08%
+
+Solve Challenge
+Mr. X and His Shots
+MediumMax Score: 50Success Rate: 44.88%
+
+Solve Challenge
+Jim and the Skyscrapers
+MediumMax Score: 60Success Rate: 49.29%
+
+Solve Challenge
+Find Maximum Index Product
+MediumMax Score: 100Success Rate: 50.29%
+
+Solved
+STATUS
+Solved
+Unsolved
+DIFFICULTY
+Easy
+Medium
+Hard
+SUBDOMAINS
+Arrays
+Linked Lists
+Trees
+Balanced Trees
+Stacks
+Queues
+Heap
+Disjoint Set
+Multiple Choice
+Trie
+Advanced
+Contest CalendarBlogScoringEnvironmentFAQAbout UsSupportCareersTerms Of ServicePrivacy PolicyRequest a Feature
