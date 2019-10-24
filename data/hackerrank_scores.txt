@@ -1,103 +1,589 @@
+Loading...
 
 PRACTICE
 COMPETE
-JOBS
+JOBSNEW
 LEADERBOARD
 
-7
+2
 jvalansi
 PracticeProblem Solving
 Problem Solving
-124 more points to get your gold badge!
-Rank: 96262|Points: 726/850
+55 more points to get your next star!
+Rank: 19971|Points: 2145/2200
 Problem Solving
 AlgorithmsData Structures
-Cycle Detection
-MediumMax Score: 5Success Rate: 93.91%
-Given a pointer to the head of a linked list, determine whether the linked list loops back onto itself
+Climbing the Leaderboard
+MediumMax Score: 20Success Rate: 55.64%
+Help Alice track her progress toward the top of the leaderboard!
+
 
 Solve Challenge
-Sparse Arrays
-MediumMax Score: 25Success Rate: 96.66%
+Extra Long Factorials
+MediumMax Score: 20Success Rate: 95.00%
 
-Solved
-Tree: Huffman Decoding
-MediumMax Score: 20Success Rate: 97.55%
 
 Solve Challenge
-Swap Nodes [Algo]
-MediumMax Score: 40Success Rate: 87.43%
+Non-Divisible Subset
+MediumMax Score: 20Success Rate: 58.83%
 
-Solved
+
+Solve Challenge
+Queen's Attack II
+MediumMax Score: 30Success Rate: 62.01%
+
+
+Solve Challenge
 promo-icon
-HackerRank is hiring Front End Developers!
-Solve the code challenge to land an interview with our team at Mountain View.
+Roku is hiring Developers!
+Roku is looking for Backend and Full Stack developers. Check out their Jobs page to learn more.
 
 View
-Is This a Binary Search Tree?
-MediumMax Score: 30Success Rate: 75.65%
+Organizing Containers of Balls
+MediumMax Score: 30Success Rate: 79.93%
+
 
 Solve Challenge
-Self Balancing Tree
-MediumMax Score: 50Success Rate: 73.27%
+Encryption
+MediumMax Score: 30Success Rate: 91.09%
+
 
 Solve Challenge
-Queue using Two Stacks
-MediumMax Score: 30Success Rate: 88.24%
+Bigger is Greater
+MediumMax Score: 35Success Rate: 77.87%
+
 
 Solve Challenge
-Components in a graph
-MediumMax Score: 50Success Rate: 82.58%
+The Time in Words
+MediumMax Score: 25Success Rate: 93.06%
+
 
 Solve Challenge
-Balanced Brackets
-MediumMax Score: 25Success Rate: 83.15%
+The Grid Search
+MediumMax Score: 30Success Rate: 74.43%
+
 
 Solve Challenge
-Castle on the Grid
-MediumMax Score: 30Success Rate: 70.36%
+3D Surface Area
+MediumMax Score: 30Success Rate: 92.24%
+
 
 Solve Challenge
-Down to Zero II
-MediumMax Score: 40Success Rate: 41.82%
+Sherlock and the Valid String
+MediumMax Score: 35Success Rate: 63.67%
+
 
 Solve Challenge
-Game of Two Stacks
-MediumMax Score: 30Success Rate: 39.10%
+Highest Value Palindrome
+MediumMax Score: 30Success Rate: 51.89%
+
 
 Solve Challenge
-Largest Rectangle
-MediumMax Score: 50Success Rate: 65.49%
+Hackerland Radio Transmitters
+MediumMax Score: 25Success Rate: 62.67%
+
 
 Solve Challenge
-Simple Text Editor
-MediumMax Score: 65Success Rate: 86.32%
+Gridland Metro
+MediumMax Score: 25Success Rate: 42.27%
 
-Solved
-Waiter
-MediumMax Score: 75Success Rate: 82.17%
-
-Solved
-Contacts
-MediumMax Score: 40Success Rate: 69.52%
 
 Solve Challenge
-Kindergarten Adventures
-MediumMax Score: 30Success Rate: 40.08%
+KnightL on a Chessboard
+MediumMax Score: 35Success Rate: 87.00%
+
 
 Solve Challenge
-Mr. X and His Shots
-MediumMax Score: 50Success Rate: 44.88%
+Minimum Loss
+MediumMax Score: 35Success Rate: 60.18%
+
 
 Solve Challenge
-Jim and the Skyscrapers
-MediumMax Score: 60Success Rate: 49.29%
+Roads and Libraries
+MediumMax Score: 30Success Rate: 63.90%
+
 
 Solve Challenge
-Find Maximum Index Product
-MediumMax Score: 100Success Rate: 50.29%
+Synchronous Shopping
+MediumMax Score: 40Success Rate: 49.00%
 
-Solved
+
+Try Again
+Snakes and Ladders: The Quickest Way Up
+MediumMax Score: 50Success Rate: 76.35%
+
+
+Solve Challenge
+The Story of a Tree
+MediumMax Score: 50Success Rate: 47.39%
+
+
+Solve Challenge
+Prim's (MST) : Special Subtree
+MediumMax Score: 60Success Rate: 82.16%
+
+
+Solve Challenge
+Clique
+MediumMax Score: 60Success Rate: 56.13%
+
+
+Solve Challenge
+Minimum Penalty Path
+MediumMax Score: 50Success Rate: 46.85%
+
+
+Solve Challenge
+Jack goes to Rapture
+MediumMax Score: 80Success Rate: 58.05%
+
+
+Solve Challenge
+Crab Graphs
+MediumMax Score: 50Success Rate: 67.52%
+
+
+Solve Challenge
+Jeanie's Route
+MediumMax Score: 80Success Rate: 62.82%
+
+
+Solve Challenge
+Roads in HackerLand
+MediumMax Score: 60Success Rate: 37.47%
+
+
+Solve Challenge
+Rust & Murderer
+MediumMax Score: 70Success Rate: 54.04%
+
+
+Solve Challenge
+Candies
+MediumMax Score: 50Success Rate: 66.06%
+
+
+Solve Challenge
+Greedy Florist
+MediumMax Score: 35Success Rate: 93.44%
+
+
+Solve Challenge
+Max Min
+MediumMax Score: 35Success Rate: 83.98%
+
+
+Solve Challenge
+Goodland Electricity
+MediumMax Score: 40Success Rate: 61.97%
+
+
+Solve Challenge
+Cloudy Day
+MediumMax Score: 45Success Rate: 27.44%
+
+
+Solve Challenge
+Lena Sort
+MediumMax Score: 30Success Rate: 38.91%
+
+
+Solve Challenge
+The Coin Change Problem
+MediumMax Score: 60Success Rate: 76.81%
+
+
+Solve Challenge
+Equal
+MediumMax Score: 30Success Rate: 47.89%
+
+
+Solve Challenge
+Flipping the Matrix
+MediumMax Score: 30Success Rate: 88.64%
+
+
+Solve Challenge
+Sherlock and Cost
+MediumMax Score: 50Success Rate: 62.85%
+
+
+Solve Challenge
+Gaming Array
+MediumMax Score: 35Success Rate: 75.07%
+
+
+Solve Challenge
+New Year Chaos
+MediumMax Score: 40Success Rate: 62.20%
+
+
+Solve Challenge
+Construct the Array
+MediumMax Score: 35Success Rate: 60.02%
+
+
+Solve Challenge
+Bonetrousle
+MediumMax Score: 50Success Rate: 45.85%
+
+
+Solve Challenge
+Kingdom Division
+MediumMax Score: 50Success Rate: 48.66%
+
+
+Solve Challenge
+Sam and substrings
+MediumMax Score: 40Success Rate: 56.48%
+
+
+Solve Challenge
+Fibonacci Modified
+MediumMax Score: 45Success Rate: 80.05%
+
+
+Solve Challenge
+Abbreviation
+MediumMax Score: 40Success Rate: 38.99%
+
+
+Solve Challenge
+Prime XOR
+MediumMax Score: 50Success Rate: 50.65%
+
+
+Solve Challenge
+Fair Cut
+MediumMax Score: 40Success Rate: 46.14%
+
+
+Solve Challenge
+The Maximum Subarray
+MediumMax Score: 50Success Rate: 75.17%
+
+
+Solve Challenge
+Prime Digit Sums
+MediumMax Score: 50Success Rate: 33.99%
+
+
+Solve Challenge
+HackerRank City
+MediumMax Score: 50Success Rate: 67.23%
+
+
+Solve Challenge
+Summing Pieces
+MediumMax Score: 40Success Rate: 46.51%
+
+
+Solve Challenge
+Mr K marsh
+MediumMax Score: 40Success Rate: 46.22%
+
+
+Solve Challenge
+Substring Diff
+MediumMax Score: 60Success Rate: 64.56%
+
+
+Solve Challenge
+Xor and Sum
+MediumMax Score: 50Success Rate: 78.21%
+
+
+Solve Challenge
+Lego Blocks
+MediumMax Score: 50Success Rate: 74.57%
+
+
+Solve Challenge
+Stock Maximize
+MediumMax Score: 50Success Rate: 81.84%
+
+
+Solve Challenge
+Two Robots
+MediumMax Score: 50Success Rate: 38.16%
+
+
+Solve Challenge
+Cut Tree
+MediumMax Score: 40Success Rate: 57.26%
+
+
+Solve Challenge
+Wet Shark and Two Subsequences
+MediumMax Score: 80Success Rate: 44.54%
+
+
+Solve Challenge
+Nikita and the Game
+MediumMax Score: 50Success Rate: 59.29%
+
+
+Solve Challenge
+Mandragora Forest
+MediumMax Score: 50Success Rate: 70.38%
+
+
+Solve Challenge
+Red John is Back
+MediumMax Score: 65Success Rate: 79.56%
+
+
+Solve Challenge
+LCS Returns
+MediumMax Score: 50Success Rate: 34.32%
+
+
+Solve Challenge
+Grid Walking
+MediumMax Score: 55Success Rate: 45.64%
+
+
+Solve Challenge
+Knapsack
+MediumMax Score: 60Success Rate: 79.39%
+
+
+Solve Challenge
+Bricks Game
+MediumMax Score: 55Success Rate: 78.56%
+
+
+Solve Challenge
+Coin on the Table
+MediumMax Score: 65Success Rate: 66.90%
+
+
+Solve Challenge
+The Longest Common Subsequence
+MediumMax Score: 55Success Rate: 44.89%
+
+
+Solve Challenge
+Play with words
+MediumMax Score: 65Success Rate: 67.40%
+
+
+Solve Challenge
+Counting Special Sub-Cubes
+MediumMax Score: 50Success Rate: 57.36%
+
+
+Solve Challenge
+Interval Selection
+MediumMax Score: 65Success Rate: 60.31%
+
+
+Solve Challenge
+The Indian Job
+MediumMax Score: 70Success Rate: 49.68%
+
+
+Solve Challenge
+Travel around the world
+MediumMax Score: 120Success Rate: 40.77%
+
+
+Solve Challenge
+Candles Counting
+MediumMax Score: 85Success Rate: 37.85%
+
+
+Solve Challenge
+Swap Permutation
+MediumMax Score: 85Success Rate: 48.48%
+
+
+Solve Challenge
+Extremum Permutations
+MediumMax Score: 100Success Rate: 51.72%
+
+
+Solve Challenge
+Counter game
+MediumMax Score: 30Success Rate: 66.83%
+
+
+Solve Challenge
+Xor-sequence
+MediumMax Score: 40Success Rate: 52.81%
+
+
+Solve Challenge
+The Great XOR
+MediumMax Score: 25Success Rate: 70.72%
+
+
+Solve Challenge
+Yet Another Minimax Problem
+MediumMax Score: 30Success Rate: 37.36%
+
+
+Solve Challenge
+Sansa and XOR
+MediumMax Score: 30Success Rate: 81.44%
+
+
+Solve Challenge
+AND Product
+MediumMax Score: 40Success Rate: 53.65%
+
+
+Solve Challenge
+Winning Lottery Ticket
+MediumMax Score: 40Success Rate: 46.40%
+
+
+Solve Challenge
+Cipher
+MediumMax Score: 50Success Rate: 75.09%
+
+
+Solve Challenge
+What's Next?
+MediumMax Score: 50Success Rate: 43.49%
+
+
+Solve Challenge
+A or B
+MediumMax Score: 50Success Rate: 66.34%
+
+
+Solve Challenge
+The Power Sum
+MediumMax Score: 20Success Rate: 90.15%
+
+
+Solve Challenge
+Crossword Puzzle
+MediumMax Score: 30Success Rate: 80.35%
+
+
+Solve Challenge
+Recursive Digit Sum
+MediumMax Score: 30Success Rate: 69.85%
+
+
+Solve Challenge
+Simplified Chess Engine
+MediumMax Score: 40Success Rate: 53.56%
+
+
+Solve Challenge
+Password Cracker
+MediumMax Score: 40Success Rate: 41.45%
+
+
+Solve Challenge
+Stone Division, Revisited
+MediumMax Score: 50Success Rate: 57.19%
+
+
+Solve Challenge
+Alice and Bob's Silly Game
+MediumMax Score: 30Success Rate: 73.00%
+
+
+Solve Challenge
+Tower Breakers, Revisited!
+MediumMax Score: 25Success Rate: 56.98%
+
+
+Solve Challenge
+Tower Breakers, Again!
+MediumMax Score: 30Success Rate: 54.00%
+
+
+Solve Challenge
+Zero-Move Nim
+MediumMax Score: 50Success Rate: 51.78%
+
+
+Solve Challenge
+Chessboard Game, Again!
+MediumMax Score: 30Success Rate: 64.44%
+
+
+Solve Challenge
+Digits Square Board
+MediumMax Score: 35Success Rate: 57.52%
+
+
+Solve Challenge
+Fun Game
+MediumMax Score: 40Success Rate: 52.03%
+
+
+Solve Challenge
+Chocolate in Box
+MediumMax Score: 70Success Rate: 74.54%
+
+
+Solve Challenge
+Kitty and Katty
+MediumMax Score: 80Success Rate: 68.04%
+
+
+Solve Challenge
+Powers Game
+MediumMax Score: 50Success Rate: 72.11%
+
+
+Solve Challenge
+Deforestation
+MediumMax Score: 50Success Rate: 49.71%
+
+
+Solve Challenge
+Bob and Ben
+MediumMax Score: 50Success Rate: 74.89%
+
+
+Solve Challenge
+Tower Breakers - The Final Battle
+MediumMax Score: 50Success Rate: 50.76%
+
+
+Solve Challenge
+Permutation game
+MediumMax Score: 70Success Rate: 71.13%
+
+
+Solve Challenge
+Play on benders
+MediumMax Score: 70Success Rate: 70.45%
+
+
+Solve Challenge
+New Year Game
+MediumMax Score: 60Success Rate: 50.11%
+
+
+Solve Challenge
+Vertical Rooks
+MediumMax Score: 90Success Rate: 67.43%
+
+
+Solve Challenge
+A stones game
+MediumMax Score: 90Success Rate: 67.90%
+
+
+Try Again
+Prime Dates
+MediumMax Score: 40Success Rate: 78.11%
+
+
+Solve Challenge
+Minimum Operations
+MediumMax Score: 45Success Rate: 60.57%
+
+
+Solve Challenge
 STATUS
 Solved
 Unsolved
@@ -106,15 +592,18 @@ Easy
 Medium
 Hard
 SUBDOMAINS
-Arrays
-Linked Lists
-Trees
-Balanced Trees
-Stacks
-Queues
-Heap
-Disjoint Set
-Multiple Choice
-Trie
-Advanced
+Warmup
+Implementation
+Strings
+Sorting
+Search
+Graph Theory
+Greedy
+Dynamic Programming
+Constructive Algorithms
+Bit Manipulation
+Recursion
+Game Theory
+NP Complete
+Debugging
 Contest CalendarBlogScoringEnvironmentFAQAbout UsSupportCareersTerms Of ServicePrivacy PolicyRequest a Feature
