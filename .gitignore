@@ -107,4 +107,4 @@ venv.bak/
 notebooks/
 
 lextools/
-token.pickleo
+token.pickle
