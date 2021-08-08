@@ -1,0 +1,24 @@
+Sentence:
+Under a sheet with blocked derivatives function with a number of minimums, when the number of steps tends to infinity, convergence (maybe in the span maybe not?) To the global minimum
+
+This step is derived or minus the derivative (with a probability of 50 percent)
+When the step length is the maximum between changes of direction
+(This change is a derivative that is magical)
+
+
+Under a sheet with blocked derivatives, a function with a number of minimums, when the number of steps tends to infinity, a convergence (maybe in the span maybe not?) To the global minimum
+This step is derived or minus the derivative (with a probability of 50 percent)
+When the step length is the maximum between changes of direction (change of direction seems to me to be the distance between a minimum and a nearby local maximum)
+That sounds right doesn&#39;t it?
+
+
+I want to check if this is true and not stupid
+It may extend the ability to do Gradient Descent to non-convex functions as well
+
+This integral is average
+g(x) = (f(x)-f(x+h))/h
+f(x) = g(x)*h+f(x+h)=g(x)*h+g(x+h)*h+f(x+2h)=
+
+(x ^ 2- (x + h) ^ 2) / h = -2x-h
+
+x^2=-2xh-h^2-2(x+h)h-h^2+(x+2h)^2

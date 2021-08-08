@@ -1,0 +1,8 @@
+If 1 stack - win
+If 2 stack - if other is 1, lower down to 1 - win
+If other is 2, lower down to 2, enemy lower down to 1/0 - win
+If other is 3, lower down to 3 (if 6 and up), enemy lower down to 1/0 - win
+If 5/4 you lose
+If other is 4/5, lower down to 3(if 6 and up)
+If 5/4 lose,
+If other is 6, lower down to 

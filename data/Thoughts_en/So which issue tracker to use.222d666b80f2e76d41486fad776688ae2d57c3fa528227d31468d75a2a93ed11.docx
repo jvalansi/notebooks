@@ -1,0 +1,13 @@
+If I can not make a hierarchy of tasks in Gitleb
+I can run a project from any task that falls apart
+But even there there is no hierarchy
+I can use tags
+But even there there is no hierarchy
+I can reference any task to her children and vice versa
+I can add the feature to Gitlab but I do not really know Ruby
+
+Another problem is that it does not run offline
+By and large this should not be too much of a problem
+But come to think of it, this happens too often
+I can create an application that implements the Gitlab API and in addition it has internal memory to enable offline operations
+But I do not really know Swift

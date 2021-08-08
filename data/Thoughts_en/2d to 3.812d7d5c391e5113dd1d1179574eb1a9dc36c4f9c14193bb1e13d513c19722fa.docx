@@ -1,0 +1,6 @@
+Tons of data - because you can generate from a computer…
+
+If we have a 3d model, and we can extract all the shapes, and their location/orientation in space, we can train a model to predict those shapes + orientation + rotation, 
+Another way is to predict the distance of every point.
+
+

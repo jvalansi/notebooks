@@ -1,0 +1,15 @@
+Assumptions:
+The particle fits through the doorway with epsilon degrees wiggle room
+This means that the probability that a particle that approaches the (center of the) doorway crosses it is (without the door itself), is epsilon/180
+The door opens up to 90 degrees to one side only.
+The door’s mass is negligible (does not change the course of the particle).
+
+The probability to cross with the direction of the door:
+
+Say there’s epsilon degree in which the ball can pass then the probability of a particle, that goes towards the door, to pass is epsilon/180 (probability that the ball is heading the right direction)
+
+The probability to cross against the direction of the door:
+
+Say there’s epsilon degree in which the ball can pass then the probability of a particle, that goes towards the door, to pass is epsilon/90 (probability that the door is sufficiently open) times epsilon/180 (probability  that the ball is heading the right direction)
+
+In total there’s 90/epsilon times more chance that a particle will cross with the direction of the door than against it.

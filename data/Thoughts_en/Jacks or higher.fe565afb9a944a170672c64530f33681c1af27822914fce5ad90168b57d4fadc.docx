@@ -1,0 +1,38 @@
+Ways to win:
+2 & >=11 -> 1
+2 & 2 -> 2
+3 -> 3
+All adjacent -> 4
+Same shape -> 6
+3 & 2 -> 9
+4 -> 25
+All adjacent & same shape -> 50
+Same shape & >=10 -> 800
+
+4 shapes
+13 numbers
+
+For each combination:
+Calculate distance to win + odds for each win for each selection for holding (4!+3!+2!+1!+0!)
+
+
+Royal Flush
+Straight Flush
+Four
+4 to Royal Flush
+Full House
+Flush
+Three
+Straight
+4 to Straight Flush
+Double pair
+High pair
+3 to Royal Flush
+4 to Flush
+Low pair
+4 to Straight
+3 high
+2 high
+1 high
+3 to Straight Flush
+Nothing

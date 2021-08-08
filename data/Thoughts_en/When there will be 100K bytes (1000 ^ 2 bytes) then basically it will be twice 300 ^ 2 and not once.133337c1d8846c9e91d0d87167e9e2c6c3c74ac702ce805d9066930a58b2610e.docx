@@ -1,0 +1,10 @@
+When there will be 100K bytes (1000 ^ 2 bytes) then basically it will be twice 300 ^ 2 and not once
+
+A player can move in 4 directions and will probably finish in 64 steps
+The board can move in 4 directions for 6 dice (24 ~ 32 directions) probably within 24 ~ 32 steps
+So we have a total
+4 ^ 64 = 2 ^ 2*64 = 2 ^ 128
+32 ^ 24 = 2 ^ 5*24 = 2 ^ 120
+
+
+if corner and a box is not on target

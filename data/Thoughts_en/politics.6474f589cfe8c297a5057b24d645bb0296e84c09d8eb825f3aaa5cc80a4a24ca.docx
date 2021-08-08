@@ -1,0 +1,42 @@
+The goal: to be the center of gravity of the group
+You have an amount of credit and you need to determine to whom you are distributing it.
+
+For example for three players:
+If the other two give each other more king you lose
+The goal is for both of them to give you more
+
+You can also give to yourself
+You need to be given the most
+Everyone is trying to get into this situation
+So for that actually invest more in the weak, which does not threaten you
+On the other hand you do not want only the support of the weak
+Because it also matters how strong your supporter is
+You want to have the highest self-vector value
+You want to be first in page rank
+That&#39;s what everyone wants, too
+
+For three players:
+There is a 3 * 3 matrix
+You set one line to maximize your page rank
+
+How does the page rank work?
+You take the self-vector that belongs to self-value 1, because it is the solution of a steady state.
+
+For two:
+Av = v
+a11*v1+a12*v2=v1
+(1-a11)v1+(1-a12)v2=v2
+
+a11 * v1 + a12 (1-v1) = v1
+a12 = (1 + a12-a11) v1
+a12 / (1 + a12-a11) = v1
+
+a12 = 0.5 * (1 + a12-a11)
+a12 + a11 = 1
+pole: 1+a12=a11 -> a11=1, a12=0
+
+According to this, it is better for each player to simply invest only in himself
+There is no guarantee that investing in someone else will help
+It&#39;s like a gift:
+You give in hope
+A

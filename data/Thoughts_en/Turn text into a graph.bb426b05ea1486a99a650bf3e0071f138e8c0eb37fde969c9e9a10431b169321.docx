@@ -1,0 +1,70 @@
+It seems to me it has to do with dbquery
+But it&#39;s more than that
+It&#39;s turning text into a graph
+for example:
+
+My dog also likes eating sausage.
+turn into:
+nmod:poss(dog-2, My-1)
+nsubj(likes-4, dog-2)
+advmod(likes-4, also-3)
+root(ROOT-0, likes-4)
+xcomp(likes-4, eating-5)
+dobj(eating-5, sausage-6)
+
+Dog
+Mine
+Likes:
+Eating
+Sausage
+
+
+Generally well received by critics, Outliers was considered more personal than Gladwell's other works, and some reviews commented on how much Outliers felt like an autobiography
+
+advmod(received-3, Generally-1)
+advmod(received-3, well-2)
+advcl(considered-9, received-3)
+case(critics-5, by-4)
+nmod(received-3, critics-5)
+nsubjpass(considered-9, Outliers-7)
+auxpass(considered-9, was-8)
+root(ROOT-0, considered-9)
+advmod(personal-11, more-10)
+xcomp(considered-9, personal-11)
+case(works-16, than-12)
+nmod:poss(works-16, Gladwell-13)
+case(Gladwell-13, 's-14)
+amod(works-16, other-15)
+nmod(personal-11, works-16)
+cc(considered-9, and-18)
+det(reviews-20, some-19)
+nsubj(commented-21, reviews-20)
+conj(considered-9, commented-21)
+mark(felt-26, on-22)
+advmod(much-24, how-23)
+dep(felt-26, much-24)
+nsubj(felt-26, Outliers-25)
+advcl(commented-21, felt-26)
+case(autobiography-29, like-27)
+det(autobiography-29, an-28)
+nmod(felt-26, autobiography-29)
+
+Outliers
+Received
+Well
+Generally
+Considered
+Personal
+More than:
+Works
+Other
+Gladwell
+Comments
+By
+Reviews
+On
+Feels like
+Autobiography
+
+
+

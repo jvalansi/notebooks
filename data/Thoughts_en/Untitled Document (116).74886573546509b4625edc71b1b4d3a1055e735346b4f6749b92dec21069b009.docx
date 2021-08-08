@@ -1,0 +1,3 @@
+A service that saves all api calls, for writing, and executes them as soon as there is a network
+This is how you can implement GitLab&#39;s api offline as well
+

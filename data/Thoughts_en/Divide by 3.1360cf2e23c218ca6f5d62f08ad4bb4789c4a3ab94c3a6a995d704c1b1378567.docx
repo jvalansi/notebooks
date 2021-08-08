@@ -1,0 +1,18 @@
+Multiplying by 3 is not a problem
+Simply multiply the number by 2 and add the number
+for example:
+10110101101
+3*
+=
+101101011010
+10110101101+
+=
+1000100000111
+
+Divide by two is the opposite action, you need to find a number that if you subtract it and divide the result by two you will get the same number
+for example
+1000100000111
+-abcdefghijkl
+=
+Abcdefghijkl0
+
