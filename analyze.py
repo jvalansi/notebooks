@@ -5,6 +5,7 @@ import datetime
 from tqdm.auto import tqdm
 
 import boto3
+import pandas as pd
 
 from news2roi import News2ROI
 
@@ -21,38 +22,63 @@ def main(event, context):
     trade_cred = json.loads(data['Body'].read().decode('utf8'))
     data = s3.get_object(Bucket=bucket_name, Key=".twilio.json")
     notify_cred = json.loads(data['Body'].read().decode('utf8'))
-    
+        
     n2r = News2ROI(openai_key, rapidapi_key, trade_cred, notify_cred)
 
-    date = datetime.datetime.today().strftime('%Y-%m-%d')
+    df = News2ROI.load_candidates(bucket_name)
+    
+    
+    now = datetime.datetime.now()
+    date = now.strftime('%Y-%m-%d')
     # date = "2024-01-26"
     
     news = n2r.get_news(date)
     articles = news
-
+    print(len(articles))
     hours = 1
-    # hours = 24*7
+    # hours = 24
     articles = [article for article in articles if News2ROI.contains_words(article, words={'United States',"US"})]
+    print(len(articles))
     articles = [article for article in articles if n2r.is_recent(article['publishedAt']['date'], delta=datetime.timedelta(hours=hours))]
+    print(len(articles))    
     
-    res = []
-    for article in tqdm(articles):
-        res += [n2r.analyse_article(article, date)]
-
+    analysis = [n2r.analyse_article(article, date) for article in tqdm(articles)]
     threshold=3
-    # threshold=4
-    candidates = News2ROI.get_candidates(res, threshold=threshold)
-    candidate = candidates.iloc[0].copy(deep=True)
-    ticker = candidate['ticker']
-    # ticker = 'aapl'
-    option_data = n2r.get_option_data(ticker)
-    option_df = News2ROI.parse_option_data(option_data)
-    row = option_df[option_df['normalized_gain']==option_df['normalized_gain'].max()].iloc[0].to_dict()
-    candidate['strike_price'] = row['strike_price']
-    candidate['bid_price'] = row['bid_price']
-    candidate['current_price'] = row['current_price']
+    # threshold=5
+    buy_candidates = News2ROI.get_candidates(analysis, threshold=threshold)
+    if not buy_candidates.empty:
+        candidate = buy_candidates.iloc[0].copy(deep=True)
+        ticker = candidate['ticker']
+        # ticker = 'aapl'
+        option_data = n2r.get_option_data(ticker)
+        option_df = News2ROI.parse_option_data(option_data)
+        row = option_df[option_df['normalized_gain']==option_df['normalized_gain'].max()].iloc[0].to_dict()
+        candidate['strike_price'] = row['strike_price']
+        candidate['bid_price'] = row['bid_price']
+        candidate['current_price'] = row['current_price']
+
+        print(n2r.notify(candidate))
     
-    print(n2r.notify(candidate))
+        df.loc[-1] = candidate
+        df = df.reset_index(drop=True)
+    
+    start = now - datetime.timedelta(hours=24)
+    end = now - datetime.timedelta(hours=1)
+    sell_candidates = df[(start < df['date']) & (df['date'] < end)]
+    print("sell_candidates", sell_candidates)
+    if not sell_candidates.empty:
+        sell = sell_candidates.iloc[0]
+        sell_options = n2r.get_option_data(sell['ticker'])
+        sell_options = News2ROI.parse_option_data(sell_options)
+        row = sell_options.set_index('strike_price').loc[sell['strike_price']]
+        df.loc[sell.name, 'sell_price'] = row['ask_price']
+        df.loc[sell.name, 'stock_sell_price'] = row['current_price']
+        df.loc[sell.name, 'roi'] = row['ask_price']/sell['buy_price']
+        
+        print(n2r.notify(df.loc[sell.name]))
+    
+    News2ROI.store_candidates(bucket_name, df)
+    
 
 if __name__=="__main__":
     main(None, None)

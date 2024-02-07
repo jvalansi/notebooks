@@ -6,12 +6,14 @@ from dateutil.relativedelta import relativedelta
 from dateutil import parser
 import requests
 from tqdm.auto import tqdm
+from io import StringIO, BytesIO
 
 import pytz
 import pandas as pd
 from openai import OpenAI
 import robin_stocks.robinhood as r
 from twilio.rest import Client
+import boto3
 
 NO_TICKER = {"N/A","NONE","VARIES","VARIES","NOT LISTED","VARIOUS","NOT PUBLICLY TRADED","NOT PROVIDED","MULTIPLE","UNKNOWN","PRIVATE COMPANY","PRIVATE","NOT APPLICABLE","PRIVATE","UNAVAILABLE",","}
 NUMERIC_COLS = ['strike_price','adjusted_mark_price','break_even_price', 'volume', 'chance_of_profit_long', 'ask_price', 'ask_size', 'bid_price', 'bid_size']
@@ -143,6 +145,8 @@ The 'action' field is the short term action that should be taken based on the re
     def get_candidates(res, date=None, save=False, threshold=3):
         res = list(filter(None,res))
         df = pd.DataFrame(res)
+        if df.empty:
+            return df
         if save==True:
             df.to_csv(f"data/{self.source}/{date}.tsv", sep='\t')
         df['action'] = pd.to_numeric(df['action'], errors='coerce')
@@ -150,7 +154,7 @@ The 'action' field is the short term action that should be taken based on the re
         return low
     
     def get_option_data(self, ticker, retries=5):
-        # login = r.login(self.trade_cred['user'],self.trade_cred['pass'])
+        login = r.login(self.trade_cred['user'],self.trade_cred['pass'])
         today = datetime.date.today()
         days_till_next_friday = (4-today.weekday()) % 7
         if not days_till_next_friday:
@@ -192,3 +196,21 @@ The 'action' field is the short term action that should be taken based on the re
         )
 
         return message.sid
+    
+    def load_candidates(bucket_name):
+        s3 = boto3.client('s3')
+        data = s3.get_object(Bucket=bucket_name, Key="candidates.tsv")
+        data = data['Body'].read().decode('utf8')
+        df = pd.read_csv(StringIO(data), sep='\t', index_col=0)
+        df['date'] = pd.to_datetime(df['date'])    
+        return df
+
+    def store_candidates(bucket_name, df):
+        s3 = boto3.client('s3')
+        df['date'] = df['date'].dt.strftime('%Y-%m-%d %H:%M:%S')
+        s_buf = BytesIO()
+        df.to_csv(s_buf, sep='\t')
+        s_buf.seek(0)
+        s3.upload_fileobj(s_buf, bucket_name, "candidates.tsv")
+
+
