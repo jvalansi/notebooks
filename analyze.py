@@ -27,25 +27,24 @@ def main(event, context):
 
     df = News2ROI.load_candidates(bucket_name)
     
-    
     now = datetime.datetime.now()
     date = now.strftime('%Y-%m-%d')
     # date = "2024-01-26"
     
-    news = n2r.get_news(date)
-    articles = news
+    articles = n2r.get_news(date, source='google')
     print(len(articles))
     hours = 1
-    # hours = 24
+    # hours = 7
     articles = [article for article in articles if News2ROI.contains_words(article, words={'United States',"US"})]
     print(len(articles))
-    articles = [article for article in articles if n2r.is_recent(article['publishedAt']['date'], delta=datetime.timedelta(hours=hours))]
+    articles = [article for article in articles if n2r.is_recent(article['publishedAt'], delta=datetime.timedelta(hours=hours))]
     print(len(articles))    
-    
-    analysis = [n2r.analyse_article(article, date) for article in tqdm(articles)]
+
+    analysis = [n2r.analyse_article(article) for article in tqdm(articles)]
     threshold=3
-    # threshold=5
+    # threshold=4
     buy_candidates = News2ROI.get_candidates(analysis, threshold=threshold)
+    print("buy_candidates",buy_candidates)    
     if not buy_candidates.empty:
         candidate = buy_candidates.iloc[0].copy(deep=True)
         ticker = candidate['ticker']
@@ -54,16 +53,18 @@ def main(event, context):
         option_df = News2ROI.parse_option_data(option_data)
         row = option_df[option_df['normalized_gain']==option_df['normalized_gain'].max()].iloc[0].to_dict()
         candidate['strike_price'] = row['strike_price']
-        candidate['bid_price'] = row['bid_price']
-        candidate['current_price'] = row['current_price']
+        candidate['buy_price'] = candidate['bid_price'] = row['bid_price']
+        candidate['stock_buy_price'] = candidate['current_price'] = row['current_price']
+        candidate['date'] = pd.to_datetime(candidate['date'])
 
         print(n2r.notify(candidate))
     
         df.loc[-1] = candidate
         df = df.reset_index(drop=True)
-    
+
     start = now - datetime.timedelta(hours=24)
-    end = now - datetime.timedelta(hours=1)
+    # start = now - datetime.timedelta(hours=72)
+    end = now - datetime.timedelta(hours=23)
     sell_candidates = df[(start < df['date']) & (df['date'] < end)]
     print("sell_candidates", sell_candidates)
     if not sell_candidates.empty:
@@ -73,10 +74,10 @@ def main(event, context):
         row = sell_options.set_index('strike_price').loc[sell['strike_price']]
         df.loc[sell.name, 'sell_price'] = row['ask_price']
         df.loc[sell.name, 'stock_sell_price'] = row['current_price']
-        df.loc[sell.name, 'roi'] = row['ask_price']/sell['buy_price']
+        df.loc[sell.name, 'roi'] = row['ask_price']/sell['bid_price']
         
         print(n2r.notify(df.loc[sell.name]))
-    
+
     News2ROI.store_candidates(bucket_name, df)
     
 

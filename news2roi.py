@@ -14,12 +14,13 @@ from openai import OpenAI
 import robin_stocks.robinhood as r
 from twilio.rest import Client
 import boto3
+from gnews import GNews
 
 NO_TICKER = {"N/A","NONE","VARIES","VARIES","NOT LISTED","VARIOUS","NOT PUBLICLY TRADED","NOT PROVIDED","MULTIPLE","UNKNOWN","PRIVATE COMPANY","PRIVATE","NOT APPLICABLE","PRIVATE","UNAVAILABLE",","}
 NUMERIC_COLS = ['strike_price','adjusted_mark_price','break_even_price', 'volume', 'chance_of_profit_long', 'ask_price', 'ask_size', 'bid_price', 'bid_size']
 
 class News2ROI():
-    def __init__(self, openai_key, news_key, trade_cred, notify_cred, source="reuters"):
+    def __init__(self, openai_key, news_key, trade_cred, notify_cred):
         os.environ["OPENAI_API_KEY"] = openai_key
         self.client = OpenAI()
         self.system_prompt = """
@@ -32,19 +33,34 @@ The 'reasoning' field is an expanation on how the given article affects the stoc
 The 'action' field is the short term action that should be taken based on the reasoning on the article regarding the stock, it should be on a scale from 1 to 10, 1 being strong sell and 10 being strong buy.
 """
         self.news_key = news_key
-        self.source = source
         self.trade_cred = trade_cred
         self.notify_cred = notify_cred
 
-        
+    def rename_fields(self, d, article):
+        article_ = {}
+        for k,v in article.items():
+            if k in d:
+                article_[d[k]] = v
+            else:
+                article_[k] = v
+        return article_
 
-    def get_news(self, date=datetime.datetime.today().strftime('%Y-%m-%d'), params={}):
-        if self.source=="reuters":
-            url = f"https://reuters-business-and-financial-news.p.rapidapi.com/article-date/{date}/1"
+    def get_news(self, date=datetime.datetime.today().strftime('%Y-%m-%d'), params={}, source="reuters"):
+        if source=="reuters":
+            url = f"https://reuters-business-and-financial-news.p.rapidapi.com/article-date/{date}/0/20"
             headers = {
                 "X-RapidAPI-Key": self.news_key,
                 "X-RapidAPI-Host": "reuters-business-and-financial-news.p.rapidapi.com"
             }
+            response = requests.get(url, headers=headers, params=params)
+            articles = response.json()['articles']
+            d = {"articlesName":"title","articlesShortDescription":"description"}
+            articles = [self.rename_fields(d, article)  for article in articles]
+        elif source=="google":
+            articles = GNews().get_top_news()
+            d = {"published date":"publishedAt"}
+            articles = [self.rename_fields(d, article)  for article in articles]
+            return articles
         else:
             payload['apiKey'] = self.news_key
             if country:
@@ -53,23 +69,33 @@ The 'action' field is the short term action that should be taken based on the re
             url = f"https://newsapi.org/v2/top-headlines"
             headers = {}
 
-        response = requests.get(url, headers=headers, params=params)
-        return response.json()
+            response = requests.get(url, headers=headers, params=params)
+            return response.json()
 
     def contains_words(article, words={'United States',"US"}):
+        if 'keywords' not in article:
+            return True
         keywords = set([k['keywordName'] for k in article['keywords']])
         tags = set([t['name'] for t in article['tags']])
         return bool(words.intersection(keywords)) or bool(words.intersection(tags))
     
     def is_recent(self, time, delta=datetime.timedelta( hours=1 )):
-        published = parser.parse(time)
-        tz = None if self.source=='reuters' else pytz.UTC
-        return   published >= datetime.datetime.now(tz=tz) - delta
+        try:
+            published = parser.parse(time)
+        except:
+            published = parser.parse(time['date'])
+        try:
+            res = published >= datetime.datetime.now(tz=None) - delta
+        except:
+            res = published >= datetime.datetime.now(tz=pytz.UTC) - delta
+        return res
     
-    def is_after_hours(article):
-        article_date = article['publishedAt']['date'] if self.source=="reuters" else article['publishedAt']['date']
-        d = parser.parse(article_date)
-        return d.hour>=21
+    def is_after_hours(time):
+        try:
+            published = parser.parse(time)
+        except:
+            published = parser.parse(time['date'])
+        return published.hour>=21
     
     def get_snp():
         import yfinance as yf
@@ -123,19 +149,19 @@ The 'action' field is the short term action that should be taken based on the re
 
         return json.loads(response.choices[0].message.content)
 
-    def analyse_article(self, article, source="reuters"):
-        if self.source=="reuters":
-            data = f"{article['articlesName']} - {article['articlesShortDescription']}"
-        else:
-            data = f"{article['title']} - {article['description']} - {article['content']}"
+    def analyse_article(self, article):
+        data = f"{article['title']} - {article['description']}"
+        if 'content' in article:
+            data +=  " - {article['content']}"
         try:
             j = self.get_sentiment(data)
             if j['ticker'] in NO_TICKER or any([x in j['ticker'] for x in NO_TICKER]):
                 # print('no ticker')
                 return
 
-            # ticker_diff, snp_diff, diff = get_diff(j['ticker'], date, is_after_hours(article))
-            j['date'] = article['publishedAt']['date'] if self.source=="reuters" else article['publishedAt']
+            # ticker_diff, snp_diff, diff = get_diff(j['ticker'], date, is_after_hours(article['publishedAt']))
+            published = article['publishedAt']
+            j['date'] = published['date'] if 'date' in published else published
             j['data'] = data
 
             return j #, ticker_diff, snp_diff, diff
@@ -148,13 +174,13 @@ The 'action' field is the short term action that should be taken based on the re
         if df.empty:
             return df
         if save==True:
-            df.to_csv(f"data/{self.source}/{date}.tsv", sep='\t')
+            df.to_csv(f"data/news/{date}.tsv", sep='\t')
         df['action'] = pd.to_numeric(df['action'], errors='coerce')
         low = df[df['action']<=threshold].sort_values('action')
         return low
     
     def get_option_data(self, ticker, retries=5):
-        login = r.login(self.trade_cred['user'],self.trade_cred['pass'])
+        login = r.login(self.trade_cred['user'],self.trade_cred['pass'],expiresIn=60*60*24*30)
         today = datetime.date.today()
         days_till_next_friday = (4-today.weekday()) % 7
         if not days_till_next_friday:
@@ -208,9 +234,9 @@ The 'action' field is the short term action that should be taken based on the re
     def store_candidates(bucket_name, df):
         s3 = boto3.client('s3')
         df['date'] = df['date'].dt.strftime('%Y-%m-%d %H:%M:%S')
-        s_buf = BytesIO()
-        df.to_csv(s_buf, sep='\t')
+        s_buf = BytesIO()        
+        df.to_csv(s_buf, sep='\t', encoding='utf8')
         s_buf.seek(0)
-        s3.upload_fileobj(s_buf, bucket_name, "candidates.tsv")
+        s3.put_object(Body=s_buf, Bucket=bucket_name, Key='candidates.tsv')
 
 
