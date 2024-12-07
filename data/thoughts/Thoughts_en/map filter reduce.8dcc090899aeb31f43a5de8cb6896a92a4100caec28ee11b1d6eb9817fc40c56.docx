@@ -1,5 +1,0 @@
-array X
-map filter reduce : f(X)
-map: f:x^n -> x^n 	[f(x) for x in X]		change values (edit values)
-filter: f: x^n -> x^m	X’ in X			change quantity (delete values)
-reduce: f: x^n -> x	f(X)			change values & quantity 

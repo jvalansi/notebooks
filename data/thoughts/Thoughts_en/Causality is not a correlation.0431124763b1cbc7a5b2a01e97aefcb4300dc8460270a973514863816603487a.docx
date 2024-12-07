@@ -1,7 +1,0 @@
-gdp=a0+a1*jewish+a2*resources+e1
-jewish=b0+b1*gdp+b2*persecutions+e2
-
-gdp=a0+a1*(b0+b1*gdp+b2*persecutions+e2)+a2*resources+e1
-gdp=a0+a1*b0+a1*b1*gdp+a1*b2*persecutions+a1*e2+a2*resources+e1
-gdp-a1*b1*gdp=a0+a1*b0+a1*b2*persecutions+a1*e2+a2*resources+e1
-gdp=(a0+a1*b0+a1*b2*persecutions+a1*e2+a2*resources+e1)/(1-a1*b1)
