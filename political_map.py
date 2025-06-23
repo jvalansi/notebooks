@@ -97,7 +97,7 @@ def preprocess_country_name(country_name):
 
 # Function to merge with thresholded fuzzy matching
 def merge_with_fuzzy_matching(world_df, leaning_df, score_threshold=80):
-    world_df['normalized_admin'] = world_df['ADMIN'].apply(preprocess_country_name)
+    world_df['normalized_admin'] = world_df['name'].apply(preprocess_country_name)
     matched_countries = []
     
     for country in world_df['normalized_admin']:
