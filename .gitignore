@@ -1,5 +1,5 @@
+# Data directory
 data/*
-!data/sp500_earnings_analysis/
 
 
 # Byte-compiled / optimized / DLL files
@@ -109,6 +109,7 @@ venv.bak/
 
 .DS_Store
 notebooks/
+.vscode/
 
 lextools/
 token.pickle
