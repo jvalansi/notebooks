@@ -2,7 +2,7 @@
 """
 S&P 500 Earnings Per Employee Analysis Script
 
-This script collects annual earnings data for S&P 500 companies over the past 5 years,
+This script collects annual earnings data for S&P 500 companies over the past 10 years,
 calculates earnings per employee metrics, and creates comprehensive visualizations.
 
 Data Sources:
@@ -40,7 +40,7 @@ load_dotenv()
 TEST_MODE = False  # Set to False for full S&P 500 run
 MAX_COMPANIES = 10 if TEST_MODE else None  # Limit companies in test mode
 RATE_LIMIT_DELAY = 0.3  # seconds between API calls
-MAX_YEARS = 5  # Past 5 years
+MAX_YEARS = 10  # Past 10 years
 OUTPUT_FILE = 'data/sp500_annual_earnings_per_employee.csv'
 CHECKPOINT_FILE = 'data/sp500_data_checkpoint.csv'
 OUTPUT_IMAGE = 'data/sp500_earnings_per_employee_trend.png'
@@ -93,7 +93,7 @@ def collect_annual_financials(sp500_df, start_index=0):
     print("="*80)
     if TEST_MODE:
         print(f"🧪 TEST MODE: Limited to {MAX_COMPANIES} companies")
-    print(f"Target: {MAX_YEARS} years per company (2020-2025)")
+    print(f"Target: {MAX_YEARS} years per company (2015-2024)")
     print(f"Rate limit: {RATE_LIMIT_DELAY}s delay between requests")
     
     annual_results = []
@@ -109,7 +109,7 @@ def collect_annual_financials(sp500_df, start_index=0):
             company_name = company_row.get('Security', ticker)
             sector = company_row.get('GICS Sector', 'Unknown')
             
-            url = f"https://financialmodelingprep.com/api/v3/income-statement/{ticker}?period=annual&limit=6&apikey={FMP_API_KEY}"
+            url = f"https://financialmodelingprep.com/api/v3/income-statement/{ticker}?period=annual&limit=10&apikey={FMP_API_KEY}"
             response = requests.get(url)
             response.raise_for_status()
             data = response.json()
@@ -124,7 +124,7 @@ def collect_annual_financials(sp500_df, start_index=0):
                     year = statement.get('calendarYear')
                     if year:
                         year = int(year)
-                        if 2020 <= year <= 2025:
+                        if 2015 <= year <= 2024:
                             record = {
                                 'ticker': ticker,
                                 'company': company_name,
@@ -304,8 +304,8 @@ def load_data(filename):
     df = pd.read_csv(filename)
     print(f"✓ Loaded {len(df)} records")
     
-    df = df[(df['year'] >= 2021) & (df['year'] <= 2024)]
-    print(f"✓ Filtered to include completed fiscal years 2021-2024")
+    df = df[(df['year'] >= 2015) & (df['year'] <= 2024)]
+    print(f"✓ Filtered to include completed fiscal years 2015-2024")
     print(f"  Records after filtering: {len(df)}")
     print(f"  Companies: {df['ticker'].nunique()}")
     print(f"  Years: {sorted(df['year'].unique())}")
@@ -345,7 +345,7 @@ def create_visualization(yearly_stats):
     print("\nCreating visualization...")
     
     fig, ((ax1, ax2), (ax3, ax4)) = plt.subplots(2, 2, figsize=(16, 12))
-    fig.suptitle('S&P 500 Comprehensive Analysis (2021-2024)',
+    fig.suptitle('S&P 500 Comprehensive Analysis (2015-2024)',
                  fontsize=16, fontweight='bold', y=0.995)
     
     years = yearly_stats.index
@@ -371,7 +371,7 @@ def create_visualization(yearly_stats):
     
     ax1.set_xlabel('Year', fontsize=12, fontweight='bold')
     ax1.set_ylabel('Aggregate Earnings per Employee ($)', fontsize=12, fontweight='bold')
-    ax1.set_title('S&P 500 Aggregate Earnings per Employee (2021-2024)',
+    ax1.set_title('S&P 500 Aggregate Earnings per Employee (2015-2024)',
                   fontsize=13, fontweight='bold', pad=15)
     ax1.grid(True, alpha=0.3)
     ax1.legend(loc='best', fontsize=10)
@@ -416,7 +416,7 @@ def create_visualization(yearly_stats):
     
     ax3.set_xlabel('Year', fontsize=12, fontweight='bold')
     ax3.set_ylabel('Total Employees (Millions)', fontsize=12, fontweight='bold')
-    ax3.set_title('S&P 500 Total Employee Count (2021-2024)',
+    ax3.set_title('S&P 500 Total Employee Count (2015-2024)',
                   fontsize=13, fontweight='bold', pad=15)
     ax3.grid(True, alpha=0.3, axis='y')
     ax3.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'{x:.1f}M'))
@@ -437,12 +437,12 @@ def create_visualization(yearly_stats):
     
     ax4.set_xlabel('Year', fontsize=12, fontweight='bold')
     ax4.set_ylabel('Total Net Income (Billions)', fontsize=12, fontweight='bold')
-    ax4.set_title('S&P 500 Total Net Income (2021-2024)',
+    ax4.set_title('S&P 500 Total Net Income (2015-2024)',
                   fontsize=13, fontweight='bold', pad=15)
     ax4.grid(True, alpha=0.3, axis='y')
     ax4.yaxis.set_major_formatter(plt.FuncFormatter(lambda x, p: f'${x:.1f}B'))
     
-    fig.text(0.5, 0.02, 'Note: 2025 excluded as fiscal year incomplete (data as of Nov 2024). 2020 excluded to focus on post-pandemic trends.',
+    fig.text(0.5, 0.02, 'Note: Analysis covers 10 years of complete fiscal year data (2015-2024).',
              ha='center', fontsize=9, style='italic', color='gray')
     
     plt.tight_layout(rect=[0, 0.03, 1, 1])
@@ -476,7 +476,7 @@ def print_summary_statistics(yearly_stats, df):
     print("\n3. Trend Analysis:")
     print(f"   Linear Trend Slope: ${slope:,.0f} per year")
     print(f"   R-squared: {r_value**2:.4f}")
-    print(f"   4-Year Total Change (2021-2024): ${earnings[-1] - earnings[0]:,.0f} ({((earnings[-1]/earnings[0])-1)*100:.1f}%)")
+    print(f"   10-Year Total Change (2015-2024): ${earnings[-1] - earnings[0]:,.0f} ({((earnings[-1]/earnings[0])-1)*100:.1f}%)")
     
     complete_data = df[df['data_quality_flag'] == 'complete']
     print("\n4. Data Quality:")
