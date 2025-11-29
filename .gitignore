@@ -1,4 +1,5 @@
 data/*
+!data/sp500_earnings_analysis/
 
 
 # Byte-compiled / optimized / DLL files
@@ -111,3 +112,4 @@ notebooks/
 
 lextools/
 token.pickle
+*.pyc
